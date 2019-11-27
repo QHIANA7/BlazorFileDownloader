@@ -13,12 +13,17 @@ Welcome to your new app.
 
 <br/>
 
+<h1>Using common HTML</h1>
 <input type="text" id="var1" size="2" @bind=@value1/>
 <label>+</label>
 <input type="text" id="var2" size="2" @bind=@value2/>
 <label>=</label>
 <input type="text" id="ret" size="2" value=@ret/>
 <button class="btn btn-primary" @onclick="CalculatePlus">Calculate</button>
+
+<br/>
+<h1>Using Razor Component</h1>
+<PlusCalculator/>
 
 
 @code {

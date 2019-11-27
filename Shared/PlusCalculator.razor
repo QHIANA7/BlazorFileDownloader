@@ -1,0 +1,17 @@
+<input type="text" id="var1" size="2" @bind=@Value1/>
+<label>+</label>
+<input type="text" id="var2" size="2" @bind=@Value2/>
+<label>=</label>
+<input type="text" id="ret" size="2" value=@Result/>
+<button class="btn btn-primary" @onclick="CalculatePlus">CalculatePlus</button>
+
+@code {
+    private int Value1 { get; set; }
+    private int Value2 { get; set; }
+    private int Result { get; set; }
+
+    private void CalculatePlus(MouseEventArgs e)
+    {
+        Result = Value1 + Value2;
+    }
+}
