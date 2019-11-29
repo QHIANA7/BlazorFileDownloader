@@ -1,0 +1,49 @@
+@page "/button_event"
+
+<h1>OnClick</h1>
+<button class="btn btn-primary" @onclick="OnClick">Click me</button>
+<label>@onclick_message</label>
+<br/><br/><br/>
+<h1>OnMouse</h1>
+<button class="btn btn-primary" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut">Hovering your mouse cursor on me</button>
+<label>@onmouse_message</label>
+<br/><br/><br/>
+<h1>OnMouseWheel</h1>
+<button class="btn btn-primary" @onmousewheel="OnMouseWheel" >Wheeling your mouse on me</button>
+<label>@onmousewheel_message : @wheel_value</label>
+
+@code {
+    String onclick_message = "Please click left side button";
+    String onmouse_message = "Not Over";
+    Int32 wheel_value = 0;
+    String onmousewheel_message = "Please Wheeling";
+
+    void OnClick()
+    {
+        onclick_message = "Clicked!";
+    }
+    
+    void OnMouseOver()
+    {
+        onmouse_message = "Mouse Over!";
+    }
+
+    void OnMouseOut()
+    {
+        onmouse_message = "Mouse Out!";
+    }
+
+    void OnMouseWheel(WheelEventArgs args )
+    {
+        if(args.DeltaY<0) {
+            wheel_value++;
+            onmousewheel_message = "[ Up ]";
+        } else {
+            wheel_value--;
+            onmousewheel_message = "[Down]";
+        }
+            
+
+        
+    }
+}
