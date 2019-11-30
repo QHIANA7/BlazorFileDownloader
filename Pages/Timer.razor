@@ -1,0 +1,25 @@
+@page "/timer"
+
+<h1>Timer</h1>
+
+@Time
+
+@code {
+    public String Time { get; set; }
+
+    protected override async Task OnInitializedAsync() { 
+        Time = "Initializing....";
+        await Task.Delay(1000);
+
+        System.Timers.Timer timer = new System.Timers.Timer(1000);
+        timer.Elapsed += async ( sender, e ) => await UpdateTime();
+        timer.Start();
+    }
+
+    public async Task UpdateTime() {
+            await InvokeAsync(() => {
+                Time = DateTime.Now.ToString();
+                StateHasChanged();
+            });
+    }
+}
