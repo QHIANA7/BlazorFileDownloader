@@ -1,0 +1,49 @@
+@page "/progress"
+
+<h1>ProgressBar</h1>
+
+<div width="100%">
+    <div align="center">
+        @foreach (Int32 increment in List_Increment)
+        {
+            <button class="btn btn-primary" @onclick="@((ui) => OnClick(increment))">@increment</button>
+        }
+    </div>
+</div>
+
+<br/>
+
+<div class="progress">
+  <div class="progress-bar @Background" style="width: @PercentageString" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">@PercentageString</div>
+</div>
+
+<br/>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @PercentageString" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">@PercentageString</div>
+</div>
+
+@code {
+    private List<Int32> List_Increment = new List<Int32> {-20, -10, -1, 1 ,10, 20};
+    private String Background {get; set;} = String.Empty;
+    private Int32 Percentage { get; set; } = 0;
+    private String PercentageString { get; set; } = "0%";
+
+    void OnClick(Int32 increment) {
+        Percentage += increment;
+
+        if(Percentage < 0)
+            Percentage = 0;
+        
+        if(Percentage > 100)
+            Percentage = 100;
+
+        //현재 진행률이 100일경우 배경을 초록색(bg-success)를 표현
+        if(Percentage.Equals(100))
+            Background = "bg-success";
+        else
+            Background = String.Empty;
+
+        PercentageString = Percentage + "%";
+    }
+}

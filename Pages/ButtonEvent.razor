@@ -9,7 +9,7 @@
 <label>@onmouse_message</label>
 <br/><br/><br/>
 <h1>OnMouseWheel</h1>
-<button class="btn btn-primary" @onmousewheel="OnMouseWheel" >Wheeling your mouse on me</button>
+<button class="btn btn-primary" @onmousewheel="OnMouseWheel" on>Wheeling your mouse on me</button>
 <label>@onmousewheel_message : @wheel_value</label>
 
 @code {
@@ -18,23 +18,19 @@
     Int32 wheel_value = 0;
     String onmousewheel_message = "Please Wheeling";
 
-    void OnClick()
-    {
+    void OnClick() {
         onclick_message = "Clicked!";
     }
     
-    void OnMouseOver()
-    {
+    void OnMouseOver() {
         onmouse_message = "Mouse Over!";
     }
 
-    void OnMouseOut()
-    {
+    void OnMouseOut() {
         onmouse_message = "Mouse Out!";
     }
 
-    void OnMouseWheel(WheelEventArgs args )
-    {
+    void OnMouseWheel(WheelEventArgs args ) {
         if(args.DeltaY<0) {
             wheel_value++;
             onmousewheel_message = "[ Up ]";
@@ -42,8 +38,5 @@
             wheel_value--;
             onmousewheel_message = "[Down]";
         }
-            
-
-        
     }
 }
